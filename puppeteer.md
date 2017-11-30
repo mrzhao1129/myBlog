@@ -6,10 +6,11 @@
 1. 什么时候把审生成的HTML返回
 2. 多加一层转换回增加服务器负担，解决办法使用缓存技术
 3. IE用户没有办法做JS交互
-4. 使用Hash路由模式存在服务端无法获取url的问题（换成History）
+4. 使用Hash路由模式存在服务端无法获取url的问题（换成HistoryAPI）
 
 ### 解决方案
-见项目shanghai-project2-s
+见项目F:\node\shanghai-project2-s
+及[F:\node\React服务端渲染\ssr-service](https://github.com/DXY-F2E/ssr-service)
 
 > ### nginx判定百度爬虫方法
 > ```
