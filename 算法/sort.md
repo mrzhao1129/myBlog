@@ -121,4 +121,4 @@ function quickSort(arr) {
 |时间复杂度|最差情况时间复杂度|空间复杂度|稳定|
 |---|---|---|---|
 |O(nlogn)|O(n^2)|O(1)|否|
-> Gif图及算法思路源于[维基百科]()
+> Gif图及算法思路源于[维基百科](https://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95)
