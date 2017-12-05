@@ -121,7 +121,13 @@ a.c.d = 4;
 e.e = 'd';
 console.log(c, b);
 console.log(Object.toString());
-
+/**
+ * test
+ * obj.toStrinng()
+ * toSring.call(obj)
+ * typeof
+ * Object.getPrototypeOf()
+ */
 // toString()返回值测试
 var obj = {test: 1, doSome: function() {}};
 var fun = function (){var a = 1;}
@@ -154,3 +160,76 @@ console.log(Object.getPrototypeOf(obj));
 // 判定对象是否存在指定方法（不包含原型）
 console.log(obj.hasOwnProperty('doSome'));
 console.log(hasOwnProperty.call(obj, 'test'));
+/**
+ * JS继承方法测试
+ */
+function User(name, sex) {
+  this.name = name;
+  this.sex = sex;
+  this.getName = function() {
+    console.log(this.name)
+  };
+  this.getSex = function() {
+    console.log(this.sex);
+  }
+}
+User.prototype.all = function() {
+  console.log(this.name, this.sex);
+}
+const Tom = new User('Tom', 'man');
+Tom.getName();
+Tom.getSex();
+Tom.all();
+console.log(Tom);
+function Students(name, sex, id) {
+  this.id = id;
+  this.prototype.name = name;
+  this.prototype.sex = sex;
+  this.getSth = function() {
+    console.log(this.name, this.sex, this.id);
+  }
+}
+Students.prototype = new User()
+const xiaoming = new Students('xm', 'man', 'swe12099');
+xiaoming.getName();
+xiaoming.getSex();
+xiaoming.getSth();
+console.log(xiaoming);
+// function Cat() {}
+// Cat.prototype = new Animal('c');
+// console.log(Cat.toString());
+//ES6
+class User {
+  constructor(name, sex) {
+    this.name = name;
+    this.sex = sex;
+  }
+  getName() {
+    console.log(this.name)
+  };
+  getSex() {
+    console.log(this.sex);
+  }
+}
+User.prototype.all = function() {
+  console.log(this.name, this.sex);
+}
+const Tom = new User('Tom', 'man');
+Tom.getName();
+Tom.getSex();
+Tom.all();
+console.log(typeof User);
+class Students extends User {
+  constructor(name, sex, id) {
+    super(name, sex);
+    this.id = id;
+  }
+  getSth() {
+    console.log(this.name, this.sex, this.id);
+  }
+}
+const xiaoming = new Students('xm', 'man', 'swe12099');
+xiaoming.getName();
+xiaoming.getSex();
+xiaoming.getSth();
+console.log(xiaoming);
