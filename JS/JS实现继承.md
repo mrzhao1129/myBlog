@@ -1,4 +1,4 @@
-##JS实现继承
+## JS实现继承
 * ES6
 ```javascript
 class User {
@@ -53,7 +53,7 @@ console.log(xiaoming);
 //			getSex:function getSex()
 //			__proto__:Object
 ```
-*ES5构造函数实现
+* ES5构造函数实现
 ```javascript
 function User(name, sex) {
   this.name = name;
