@@ -185,3 +185,5 @@ console.log(xiaoming.address);//[ 'add', 'add1', 'add3' ]
 console.log(xiaohua.address);//[ 'add', 'add1' ]
 ```
 > 解决了原型链继承中存在的两个问题
+
+[参考](https://www.cnblogs.com/ayqy/p/4471638.html)
