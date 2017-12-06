@@ -160,3 +160,40 @@ console.log(Object.getPrototypeOf(obj));
 // 判定对象是否存在指定方法（不包含原型）
 console.log(obj.hasOwnProperty('doSome'));
 console.log(hasOwnProperty.call(obj, 'test'));
+
+
+function User(name, sex) {
+  //实例属性与方法
+  this.name = name;
+  this.sex = sex;
+  //实例引用属性（单个用例修改后，其他用例全部更改）
+  this.address = ['add', 'add1'];
+}
+User.prototype.getAll = function() {
+  console.log(this.name, this.sex);
+}
+User.prototype.getName = function() {
+  console.log(this.name)
+};
+User.prototype.getSex = function() {
+  console.log(this.sex);
+}
+const Tom = new User('Tom', 'man');
+console.log(Tom);
+function Students(name, sex, id) {
+  User.call(this, name, sex);
+  this.id = id;
+}
+Students.prototype = new User();
+Students.prototype.getAll = function() {
+  console.log(this.name, this.sex, this.id);
+}
+const xiaoming = new Students('xm', 'man', 'swe12099');
+xiaoming.getAll();//xm man swe12099
+console.log(xiaoming.address);//[ 'add', 'add1' ]
+console.log(xiaoming);
+const xiaohua = new Students('xh', 'woman', 'swe12100');
+xiaohua.getAll();//xh woman swe12100
+xiaoming.address.push('add3');
+console.log(xiaoming.address);//[ 'add', 'add1', 'add3' ]
+console.log(xiaohua.address);//[ 'add', 'add1', 'add3' ]
