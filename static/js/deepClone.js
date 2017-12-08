@@ -3,10 +3,10 @@ function 手写到从前() {
     var copyResult =  {};
     var obj = arguments[0];
     //如果不是对象类型直接返回
-    if(toString.call(obj) !== '[object Object]') {
+    if(toString.call(obj) !== '[object Object]' && toString.call(obj) !== '[object Array]') {
       return obj;
     }
-    var copyKeys = Object.keys(obj)
+    var copyKeys = Object.keys(obj);
     for(var i = 0; i < copyKeys.length; i++) {
       copyResult[copyKeys[i]] = deepClone(obj[copyKeys[i]]);
     }
@@ -106,21 +106,47 @@ function jquery啦() {
   // e.e = 'd';
   console.log(c, b);
 }
-
-//test
-//函数引用测试
-var a = function() {
-  console.log(1);
+function 函数引用测试() {
+  var a = function() {
+    console.log(1);
+  }
+  var b = a;
+  a = function() {
+    console.log(2);
+  }
+  a();//2
+  b();//1
+  //数组引用测试
+  var a = [1,2,3];
+  var b = [4,5,a];
+  a = [7,8,9];
+  console.log(a);
+  console.log(b);
 }
-var b = a;
-a = function() {
-  console.log(2);
+function 迭代生成器() {
+  function* born() {
+    var index = 0;
+    for(let i = 0; i < 20; i++) {
+      yield index += 1;
+    }
+  }
+  var son = born();
+  console.log(son);
+  // for(let i = 0; i < 20; i++) {
+  //   console.log(son.next());
+  // }
+  for(let j of son) {
+    console.log(j);
+  }
+  /////////////////////////////
+  var testBorn = {};
+  testBorn[Symbol.iterator] = function* () {
+    yield 5;
+    yield 6;
+    yield 7;
+  }
+  for(let i of testBorn) {
+    console.log(i);
+  }
+  console.log(testBorn);
 }
-a();//2
-b();//1
-//数组引用测试
-var a = [1,2,3];
-var b = [4,5,a];
-a = [7,8,9];
-console.log(a);
-console.log(b);
