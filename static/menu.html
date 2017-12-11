@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* reset */
+    html, body {
+      padding: 0; margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    /* 三段式布局 */
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+    .left, .right {
+      background-color: whitesmoke;
+      width: 200px;
+      height: 100%;
+    }
+    .center {
+      height: 100%;
+      margin: 0 200px 0 200px;
+    }
+    /* 菜单效果 */
+    ul {
+      padding: 0;
+      position: relative;/* BFC */
+      background: rgb(16, 142, 233);
+    }
+    li {
+      line-height: 40px;
+      list-style-type: none;
+      cursor: pointer;
+      position: relative;
+    }
+    li:hover {
+      background: rgb(12, 91, 148);
+    }
+    li:hover>ul {
+      transition: opacity .5s cubic-bezier(0.4, 0, 0.2, 1);
+      height: auto;
+      opacity: 1;
+      visibility: visible;
+    }
+    li>ul {
+      position: absolute;
+      left: 200px;
+      top: 0;
+      width: 200px;
+      opacity: 0.5;
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+    <ul class="outer-ul">
+      <li>
+        <span>竖向菜单1</span>
+        <ul>
+          <li>
+            <span>in竖向菜单1</span>
+            <ul>
+              <li>inin竖向菜单1</li>
+              <li>inin竖向菜单1</li>
+              <li>inin竖向菜单1</li>
+              <li>inin竖向菜单1</li>
+            </ul>
+          </li>
+          <li>in竖向菜单1</li>
+          <li>in竖向菜单1</li>
+          <li>in竖向菜单1</li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">竖向菜单2</a>
+        <ul>
+          <li>in竖向菜单2</li>
+          <li>in竖向菜单2</li>
+          <li>in竖向菜单2</li>
+          <li>in竖向菜单2</li>
+        </ul>
+      </li>
+      <li><a>竖向菜单3</a></li>
+      <li><a>竖向菜单4</a></li>
+      <li><a>竖向菜单5</a></li>
+    </ul>
+  </div>
+  <div class="right"></div>
+  <div class="center">
+    
+  </div>
+</body>
+</html>

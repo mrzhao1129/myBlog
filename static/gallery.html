@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      /* box-sizing: border-box; */
+    }
+    html, body, ul {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    ul {
+      list-style-type: none;
+    }
+    .wrap {
+      width: 480px;
+      height: 270px;
+      /* border: 1px red solid; */
+      overflow: hidden;
+    }
+    .checkit, .wrap {
+      margin: 0 auto;
+    }
+    .silder {
+      height: 100%;
+      width: 300%;
+      animation: silde1 5s ease-in-out infinite;
+    }
+    .silder li {
+      width: 480px;
+      height: 100%;
+      /* border: 1px black solid; */
+      float: left;
+    }
+    .silder li:nth-child(1) {
+      background: url('./img/image1.jpg') 0 0/cover;
+    }
+    .silder li:nth-child(2) {
+      background: url('./img/image2.jpg') 0 0/cover;
+    }
+    .silder li:nth-child(3) {
+      background: url('./img/image3.jpg') 0 0/cover;
+    }
+    @keyframes silde1 {
+      0% { margin-left: 0; }
+      17% { margin-left: 0; }
+      34% { margin-left: -480px; }
+      51% { margin-left: -480px; }
+      68% { margin-left: -960px; }
+      85% { margin-left: -960px; }
+      100% { margin-left: 0; }
+    }
+    @keyframes silde2 {
+      0% { margin-left: -480px; }
+      17% { margin-left: -480px; }
+      34% { margin-left: -960px; }
+      51% { margin-left: -960px; }
+      68% { margin-left: 0; }
+      85% { margin-left: 0; }
+      100% { margin-left: -480px; }
+    }
+    @keyframes silde3 {
+      0% { margin-left: -960px; }
+      17% { margin-left: -960px; }
+      34% { margin-left: 0; }
+      51% { margin-left: 0; }
+      68% { margin-left: -480px; }
+      85% { margin-left: -480px; }
+      100% { margin-left: -960px; }
+    }
+    label {
+      display: inline-block;
+      cursor: pointer;
+      text-align: center;
+      line-height: 30px;
+      width: 50px;
+      height: 30px;
+      background-color: whitesmoke;
+      margin: 5px;
+      border: 1px solid black;
+      border-radius: 2px;
+    }
+    /* :checked用来确定当前应该自信的animation-name */
+    [name=slider]:nth-child(1):checked~.wrap .silder {
+      -webkit-animation-name: silde1;
+    }
+    [name=slider]:nth-child(2):checked~.wrap .silder {
+      -webkit-animation-name: silde2;
+    }
+    [name=slider]:nth-child(3):checked~.wrap .silder {
+      -webkit-animation-name: silde3;
+    }
+    /* :active用来重启动画 */
+    [name=slider]:nth-child(1):active~.wrap .silder {
+      -webkit-animation-name: none;
+      margin-left: 0;
+    }
+    [name=slider]:nth-child(2):active~.wrap .silder {
+      -webkit-animation-name: none;
+      margin-left: -480px;
+    }
+    [name=slider]:nth-child(3):active~.wrap .silder {
+      -webkit-animation-name: none;
+      margin-left: -960px;
+    }
+    .checkit {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="radio" id="l01" name="slider">111</input>
+  <input type="radio" id="l02" name="slider">22</input>
+  <input type="radio" id="l03" name="slider">33</input>
+  <div class="wrap">
+    <ul class="silder">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="checkit">
+    <label for="l01">1</label>
+    <label for="l02">2</label>
+    <label for="l03">3</label>
+  </div>
+  <script>
+    console.log(document.styleSheets);
+    console.log(document.styleSheets[0].deleteRule("silde2"));
+    console.log(document.getElementsByClassName('silder'));
+  </script>
+</body>
+</html>
