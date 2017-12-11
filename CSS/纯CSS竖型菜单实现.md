@@ -64,6 +64,7 @@ li>ul {
 > * overflow: 除去visible(比如hidden,auto,scroll...)
 > * display: table-cell,table-caption,inline-block,table-caption(css3);(table不产生BFC，但其内部包含匿名的table-cell)
 > * position: absolute,fixed,relative,fixed(css3)
+
 接下来加上hover和transition过渡效果，完工。
 ```css
 li:hover {
