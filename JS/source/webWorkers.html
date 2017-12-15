@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var myWorker = new Worker('worker.js');
+    var arr = [1, 2];
+    myWorker.postMessage(arr);
+    
+    myWorker.onmessage = function(e) {
+      console.log(e);
+      console.log('arr:', arr);
+      myWorker.terminate();
+    }
+    myWorker.onerror = function(err) {
+      console.log(err);
+    }
+  </script>
+</body>
+</html>
