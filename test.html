@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+    // function parent( name, sex ) {
+    //   this.name = name;
+    //   this.sex = sex;
+    //   this.love = true;
+    // }
+    // parent.prototype.getSex = function() {
+    //   console.log(this.sex);
+    // }
+    // var baba = new parent('laowang', 'man');
+    
+  
+    // function child( name, sex, id, id2 ) {
+    //   parent.call(this, name, sex);
+    //   this.id = id;
+    //   this.id2 = id2;
+    // }
+    // child.prototype = Object.create(parent.prototype);
+    // // child.prototype = new parent();
+    // child.prototype.getId2 = function() {
+    //   console.log(this.id2)
+    // }
+    // var xiaowang = new child( 'xw', 'man', 1, 2 );
+    // xiaowang.love = false;
+    // console.log(baba);
+    // console.log(xiaowang);
+    /////////////////////////////////////////////
+    class A {
+      constructor(arg1) {
+        this.arg1 = arg1;
+      }
+      getArg1() {
+        return this.arg1; 
+      }
+    }
+    class B extends A {
+      constructor(arg1, arg2) {
+        super(arg1);
+        this.arg2 = arg2;
+      }
+      getArg2() {
+        return this.arg2;
+      }
+    }
+    class C extends B {
+      constructor(arg1, arg2, arg3) {
+        super(arg1, arg2);
+        this.arg3 = arg3;
+      }
+      getArg3() {
+        return this.arg3;
+      }
+    }
+    var a = new A(1);
+    var b = new B(2, 3);
+    var c = new C(4, 5, 6)
+    console.log(a, b, c);
+    ///////////////////////////////////////////
+    function AF(arg1) {
+      this.arg1 = arg1;
+    }
+    AF.prototype.getArg1 = function() {
+      return this.arg1;
+    }
+    function BF(arg1, arg2) {
+      AF.call(this, arg1);
+      this.arg2 = arg2;
+    }
+    BF.prototype = Object.create(AF.prototype);
+    BF.prototype.getArg2 = function() {
+      return this.arg2;
+    }
+    function CF(arg1, arg2, arg3) {
+      BF.call(this, arg1, arg2);
+      this.arg3 = arg3;
+    }
+    CF.prototype = Object.create(BF.prototype);
+    CF.prototype.getArg3 = function() {
+      return this.arg3;
+    }
+    var af = new AF(1);
+    var bf = new BF(2, 3);
+    var cf = new CF(4, 5, 6);
+    console.log(af, bf, cf);
+</script>
+</body>
+</html>

@@ -186,4 +186,64 @@ console.log(xiaohua.address);//[ 'add', 'add1' ]
 ```
 > 解决了原型链继承中存在的两个问题
 
+`171220 17:44完善`
+```javascript
+class A {
+  constructor(arg1) {
+    this.arg1 = arg1;
+  }
+  getArg1() {
+    return this.arg1; 
+  }
+}
+class B extends A {
+  constructor(arg1, arg2) {
+    super(arg1);
+    this.arg2 = arg2;
+  }
+  getArg2() {
+    return this.arg2;
+  }
+}
+class C extends B {
+  constructor(arg1, arg2, arg3) {
+    super(arg1, arg2);
+    this.arg3 = arg3;
+  }
+  getArg3() {
+    return this.arg3;
+  }
+}
+var a = new A(1);
+var b = new B(2, 3);
+var c = new C(4, 5, 6)
+console.log(a, b, c);
+///////////////////////////////////////////
+function AF(arg1) {
+  this.arg1 = arg1;
+}
+AF.prototype.getArg1 = function() {
+  return this.arg1;
+}
+function BF(arg1, arg2) {
+  AF.call(this, arg1);
+  this.arg2 = arg2;
+}
+BF.prototype = Object.create(AF.prototype);
+BF.prototype.getArg2 = function() {
+  return this.arg2;
+}
+function CF(arg1, arg2, arg3) {
+  BF.call(this, arg1, arg2);
+  this.arg3 = arg3;
+}
+CF.prototype = Object.create(BF.prototype);
+CF.prototype.getArg3 = function() {
+  return this.arg3;
+}
+var af = new AF(1);
+var bf = new BF(2, 3);
+var cf = new CF(4, 5, 6);
+console.log(af, bf, cf);
+```
 [参考](https://www.cnblogs.com/ayqy/p/4471638.html)
