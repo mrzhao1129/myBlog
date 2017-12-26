@@ -3,6 +3,7 @@
 * [纯CSS轮播图实现](./CSS/纯CSS轮播图实现.md)
 * [了解three.js](./canvas/three.js.md)
 * [[HTML5]Web Worders小记](./JS/WebWorkers.md)
+* [npm坑坑](./)
 ## 17-12
 * 19 [页面间的相互操作](./JS/页面间的相互操作.md)
 * 11 [纯CSS竖型菜单实现](./CSS/纯CSS竖型菜单实现.md)
