@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="sea-modules/seajs/seajs/2.2.0/sea.js"></script>
+  <script>
+    seajs.use('./static/model');
+    define('mymodel', function(require) {
+      'use strict';
+      console.log('i am mymodel');
+    });
+    define('mymodel-obj', {test: 1});
+    seajs.use('mymodel');
+    console.log(seajs.use('mymodel-obj'));
+  </script>
+</body>
+</html>

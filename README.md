@@ -4,6 +4,7 @@
 * [了解three.js](./canvas/three.js.md)
 * [[HTML5]Web Worders小记](./JS/WebWorkers.md)
 * [npm坑坑](./)
+* [JS模块化](./JS/JS模块化(AMD,CMD).md)
 ## 17-12
 * 19 [页面间的相互操作](./JS/页面间的相互操作.md)
 * 11 [纯CSS竖型菜单实现](./CSS/纯CSS竖型菜单实现.md)
