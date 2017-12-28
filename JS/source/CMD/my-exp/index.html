@@ -9,14 +9,23 @@
 <body>
   <script src="sea-modules/seajs/seajs/2.2.0/sea.js"></script>
   <script>
-    seajs.use('./static/model');
-    define('mymodel', function(require) {
-      'use strict';
-      console.log('i am mymodel');
+    seajs.config({
+      vars: {
+        'locale': 'jquery',
+      }
     });
-    define('mymodel-obj', {test: 1});
-    seajs.use('mymodel');
-    console.log(seajs.use('mymodel-obj'));
+
+    seajs.use('./static/model');
+    // define('mymodel', function(require, exports, module) {
+    //   'use strict';
+    //   console.log(require, exports, module);
+    //   console.log(require('./sea-modules/jquery/jquery/1.10.1/jquery.js'));
+    // });
+    // define('mymodel-obj', {test: 1});
+    // seajs.use(['mymodel', 'mymodel-obj'], function(t, t2) {
+    //   console.log(t, t2);
+    // });
+    // seajs.use('mymodel-obj');
   </script>
 </body>
 </html>
