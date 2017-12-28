@@ -95,4 +95,8 @@ module.uri;//模块的绝对路径
 module.dependencies;//(Array)模块的依赖
 module.exports;//注意：只能同步执行，不能再回调中调用
 ```
-### ES6
+#### 模块标识
+1. http,
+1. 可以是相对、绝对路径
+1. 可以使seajs.confi
+>### ES6模块处理
