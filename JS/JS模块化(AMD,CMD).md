@@ -168,3 +168,9 @@ seajs.config({
 * [CMD 模块构建，从认识 Grunt 开始](https://github.com/seajs/seajs/issues/670)
 * [如何使用 Grunt 构建一个中型项目](https://github.com/seajs/seajs/issues/672)
 >### ES6模块处理
+随手写一个React类实现。
+```javascript
+import React, { Component } from 'react';
+class queryForm extends Component {}
+export default queryForm;
+```
