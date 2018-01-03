@@ -1,7 +1,6 @@
 ## VSCode Debug 之 launch.json
----
-贴一些用VSCode可以自动生成的配置列表
-```json
+贴一些用VSCode可以自动生成的配置列表。注意：json文件不能包含注释内容，切记用的时候删除。
+```javascript
 {
   "version": "0.2.0",
   "configurations": [
@@ -10,10 +9,9 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      //启动文件
       "program": "${workspaceRoot}\\bin\\www"
     },
-    //在全局安装nodemon的基础上的调试模式
+    //在全局安装nodemon的基础上的调试模式，坑大多来自于这里
     {
       "type": "node",
       "request": "launch",
@@ -22,7 +20,10 @@
       "program": "${workspaceRoot}\\bin\\www",
       "restart": true,
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "dev"
+      }
     },
     //launch模式的调试
     {
@@ -43,9 +44,33 @@
   ]
 }
 ```
-> "request"
-> * "launch"：由 vscode 来启动一个独立的具有 debug 模式的程序
-> * "attach"：附加于（也可以说“监听”）一个已经启动的程序（必须已经开启 Debug 模式）
+### Configuration attributes
+* "console"[string]
+  * "internalConsole"：VSCode 的调试控制台
+  * "integratedTerminal"：会在终端tab页中显示
+  * "externalTerminal"：windows下会弹出cmd小黑框中显示
+* "env"[object]  
+  运行时的全局变量，在程序中例如用`process.env.NODE_ENV`获取  
+  exp:`"env": { NODE_ENV": "dev" }`
+* "port"[number]  
+  在runtimeExecutable为npm,nodemon情况下，不设置端口，会默认生成一些runtimeArgs的参数，导致再添加一些自定义的runtimeArgs时候会填充到默认生成的那些后面，比如:  
+  `node --inspect --debug-brk --inspect-brk ./bin/www`  
+  --inspect-brk就是我们在runtimeArgs的自定义的。
+* "program"[string]  
+  default: "${workspaceRoot}\\bin\\www"  
+  需要启动（debug）的源代码，整个项目的入口。
+* "request"[string]
+  * "launch"：由 vscode 来启动一个独立的具有 debug 模式的程序。
+  * "attach"：附加于（也可以说“监听”）一个已经启动的程序。
+* "restart"[boolean]  
+  和nodemon搭配使用疗效最佳
+  * true or false  
+* "runtimeArgs"[array]  
+  跟随在runtimeExecutable后边的参数  
+  exp:`"runtimeArgs": [ "--inspect" ]`
+* "runtimeExecutable"[string]
+  default: "node"  
+  启动方式，方式分为npm,node,nodemon
 ### nodemon
 ---
 For use during development of a node.js based application.
@@ -59,6 +84,8 @@ nodemon does not require any changes to your code or method of development. node
 nodemo开启后将监控路径中的文件，如果文件发生变化，nodemo将会自动重新启动您的node应用。
 
 您的项目中的代码和方法不需要对nodemon进行任何适配。nodemon会简单的包装您的项目并且监控任何文件的改变，请记住nodemon是对node加了一层包装，把她当成"node"命令行运行脚本的替换者。
+
+下面的配置没有实际操作过，贴官网的范例。主要实践还是在VSCode的launch.json配置文件中，且也满足需求。
 
 #### Sample nodemon.json
 ```json
@@ -85,3 +112,5 @@ nodemo开启后将监控路径中的文件，如果文件发生变化，nodemo�
   "ext": "js json"
 }
 ```
+[参考内容：Visual Studio Code 前端调试不完全指南](http://jerryzou.com/posts/vscode-debug-guide/)  
+[参考内容：VSCode Launch configuration attributes](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_launch-configuration-attributes)

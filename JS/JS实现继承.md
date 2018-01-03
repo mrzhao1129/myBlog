@@ -186,7 +186,6 @@ console.log(xiaohua.address);//[ 'add', 'add1' ]
 ```
 > 解决了原型链继承中存在的两个问题
 
-`171220 17:44完善`
 ```javascript
 class A {
   constructor(arg1) {
@@ -218,7 +217,7 @@ var a = new A(1);
 var b = new B(2, 3);
 var c = new C(4, 5, 6)
 console.log(a, b, c);
-///////////////////////////////////////////
+/////////////////////171220 17:44完善//////////////////////
 function AF(arg1) {
   this.arg1 = arg1;
 }
