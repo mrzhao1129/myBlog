@@ -1,4 +1,7 @@
 ## VSCode Debug 之 launch.json
+> VSCode: 1.16.1  
+> node: 8.91
+
 贴一些用VSCode可以自动生成的配置列表。注意：json文件不能包含注释内容，切记用的时候删除。
 ```javascript
 {
@@ -47,8 +50,8 @@
 ### Configuration attributes
 * "console"[string]
   * "internalConsole"：VSCode 的调试控制台
-  * "integratedTerminal"：会在终端tab页中显示
-  * "externalTerminal"：windows下会弹出cmd小黑框中显示
+  * "integratedTerminal"：VSCode 的终端
+  * "externalTerminal"：windows下会弹出cmd小黑框
 * "env"[object]  
   运行时的全局变量，在程序中例如用`process.env.NODE_ENV`获取  
   exp:`"env": { NODE_ENV": "dev" }`

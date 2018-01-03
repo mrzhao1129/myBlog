@@ -4,7 +4,6 @@
 * [了解three.js](./canvas/three.js.md)
 * [[HTML5]Web Worders小记](./JS/WebWorkers.md)
 * [npm坑坑](./nodejs/npm坑坑.md)
-* [VSCode Debug之launch.json](./JS/launch.json.md)
 ## 18-01
 * 03 [VSCode Debug之launch.json](./JS/launch.json.md)
 ## 17-12
