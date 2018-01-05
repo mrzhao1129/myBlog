@@ -48,30 +48,30 @@
 }
 ```
 ### Configuration attributes
-* "console"[string]
+* **"console"[string]**
   * "internalConsole"：VSCode 的调试控制台
   * "integratedTerminal"：VSCode 的终端
   * "externalTerminal"：windows下会弹出cmd小黑框
-* "env"[object]  
+* **"env"[object]**  
   运行时的全局变量，在程序中例如用`process.env.NODE_ENV`获取  
   exp:`"env": { NODE_ENV": "dev" }`
-* "port"[number]  
+* **"port"[number]**  
   在runtimeExecutable为npm,nodemon情况下，不设置端口，会默认生成一些runtimeArgs的参数，导致再添加一些自定义的runtimeArgs时候会填充到默认生成的那些后面，比如:  
   `node --inspect --debug-brk --inspect-brk ./bin/www`  
   --inspect-brk就是我们在runtimeArgs的自定义的。
-* "program"[string]  
+* **"program"[string]**  
   default: "${workspaceRoot}\\bin\\www"  
   需要启动（debug）的源代码，整个项目的入口。
-* "request"[string]
+* **"request"[string]**
   * "launch"：由 vscode 来启动一个独立的具有 debug 模式的程序。
   * "attach"：附加于（也可以说“监听”）一个已经启动的程序。
-* "restart"[boolean]  
+* **"restart"[boolean]**  
   和nodemon搭配使用疗效最佳
   * true or false  
-* "runtimeArgs"[array]  
+* **"runtimeArgs"[array]**  
   跟随在runtimeExecutable后边的参数  
   exp:`"runtimeArgs": [ "--inspect" ]`
-* "runtimeExecutable"[string]
+* **"runtimeExecutable"[string]**
   default: "node"  
   启动方式，方式分为npm,node,nodemon
 ### nodemon
