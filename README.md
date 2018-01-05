@@ -2,8 +2,9 @@
 ## 草稿
 * [纯CSS轮播图实现](./CSS/纯CSS轮播图实现.md)
 * [了解three.js](./canvas/three.js.md)
-* [[HTML5]Web Worders小记](./JS/WebWorkers.md)
 * [npm坑坑](./nodejs/npm坑坑.md)
+* [node调试（多进程调试）](./nodejs/node多进程调试.md)
+* [现代浏览器的缓存方案]()
 ## 18-01
 * 03 [VSCode Debug之launch.json](./JS/launch.json.md)
 ## 17-12

@@ -1,6 +1,6 @@
 ## VSCode Debug 之 launch.json
 > VSCode: 1.16.1  
-> node: 8.91
+> node: 8.9.1
 
 贴一些用VSCode可以自动生成的配置列表。注意：json文件不能包含注释内容，切记用的时候删除。
 ```javascript

@@ -47,7 +47,9 @@ seajs.use('url' [, functoin(module){}]);
 ```
 #### 模块定义
 ```javascript
+
 // -----模块定义-----
+
 define(function(require, exports, module) {});
 define({ "foo": "bar" });
 define('I am a template. My name is {{name}}.');
@@ -56,11 +58,13 @@ define('hello', ['jquery'], function(require, exports, module) {});
 // id 和 deps 参数可以省略。省略时，可以通过构建工具自动生成。
 
 // -----判定当前页面是否有 CMD 模块加载器-----
+
 if (typeof define === "function" && define.cmd) {
   // 有 Sea.js 等 CMD 模块加载器存在
 }
 
 // -----define factory第一个参数require------
+
 // 同步加载
 var a = require('./a');
 // 异步加载（调用成功后调用callback）
@@ -69,6 +73,7 @@ require.async(id, callback);
 require.resolve('./b');
 
 // -----define factory第二个参数 exports------
+
 // 对外提供 foo 属性
 exports.foo = 'bar';
 // 对外提供 doSomething 方法
@@ -90,6 +95,7 @@ define({
 });
 
 // -----define factory第三个参数module------
+
 module.id;// 唯一标示符
 module.uri;// 模块的绝对路径
 module.dependencies;// (Array)模块的依赖
