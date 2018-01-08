@@ -1,5 +1,6 @@
-## JS实现继承
-* ES6（完美）
+# JS实现继承
+## ES6（完美）
+ES6在原生层面加入了`class`写法更像Java了，对于用js写对象继承更加友好了。
 ```javascript
 class User {
   constructor(name, sex) {
@@ -53,8 +54,8 @@ console.log(xiaoming);
 //			getSex:function getSex()
 //			__proto__:Object
 ```
-* ES5构造函数实现
-1. 原型链继承
+## ES5构造函数实现
+### 原型链继承
 ```javascript
 function User(name, sex) {
   //实例属性与方法
@@ -118,10 +119,10 @@ xiaoming.address.push('add3');
 console.log(xiaoming.address);//[ 'add', 'add1', 'add3' ]
 console.log(xiaohua.address);//[ 'add', 'add1', 'add3' ]
 ```
-> 存在问题：
-> 1. 实例引用属性修改会引起所有实例相关属性变化。
-> 2. 无法向父类传递属性和方法  
-2. 组合继承
+#### 存在问题：
+* 实例引用属性修改会引起所有实例相关属性变化。
+* 无法向父类传递属性和方法  
+### 组合继承
 ```javascript
 function User(name, sex) {
   //实例属性与方法
@@ -184,39 +185,40 @@ xiaoming.address.push('add3');
 console.log(xiaoming.address);//[ 'add', 'add1', 'add3' ]
 console.log(xiaohua.address);//[ 'add', 'add1' ]
 ```
-> 解决了原型链继承中存在的两个问题
-
+解决了原型链继承中存在的两个问题
+### 类class解决方案
+这个方法构造的对象结构和class构造的类似，但是对于继承的原型不能很好的展示出来，且对于继承的方法来说，class生成的是不可枚举方法而这种是可枚举的。
 ```javascript
-class A {
-  constructor(arg1) {
-    this.arg1 = arg1;
-  }
-  getArg1() {
-    return this.arg1; 
-  }
-}
-class B extends A {
-  constructor(arg1, arg2) {
-    super(arg1);
-    this.arg2 = arg2;
-  }
-  getArg2() {
-    return this.arg2;
-  }
-}
-class C extends B {
-  constructor(arg1, arg2, arg3) {
-    super(arg1, arg2);
-    this.arg3 = arg3;
-  }
-  getArg3() {
-    return this.arg3;
-  }
-}
-var a = new A(1);
-var b = new B(2, 3);
-var c = new C(4, 5, 6)
-console.log(a, b, c);
+// class A {
+//   constructor(arg1) {
+//     this.arg1 = arg1;
+//   }
+//   getArg1() {
+//     return this.arg1; 
+//   }
+// }
+// class B extends A {
+//   constructor(arg1, arg2) {
+//     super(arg1);
+//     this.arg2 = arg2;
+//   }
+//   getArg2() {
+//     return this.arg2;
+//   }
+// }
+// class C extends B {
+//   constructor(arg1, arg2, arg3) {
+//     super(arg1, arg2);
+//     this.arg3 = arg3;
+//   }
+//   getArg3() {
+//     return this.arg3;
+//   }
+// }
+// var a = new A(1);
+// var b = new B(2, 3);
+// var c = new C(4, 5, 6)
+// console.log(a, b, c);
 /////////////////////171220 17:44完善//////////////////////
 function AF(arg1) {
   this.arg1 = arg1;
@@ -245,4 +247,4 @@ var bf = new BF(2, 3);
 var cf = new CF(4, 5, 6);
 console.log(af, bf, cf);
 ```
-[参考](https://www.cnblogs.com/ayqy/p/4471638.html)
+[参考文章：重新理解JS的6种继承方式](https://www.cnblogs.com/ayqy/p/4471638.html)
