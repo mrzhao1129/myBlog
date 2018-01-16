@@ -1,3 +1,4 @@
+# npm安装、更新存在的一些文件
 ## 查看npm配置[[详解]](http://blog.csdn.net/zmrdlb/article/details/53187804)
 npm config list //查看基本配置  
 npm config list -l //查看所有配置  
