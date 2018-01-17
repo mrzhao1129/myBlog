@@ -5,8 +5,11 @@
 * [npm坑坑](./nodejs/npm坑坑.md)
 * [node调试（多进程调试）](./nodejs/node多进程调试.md)
 * [webpack多页面打包](./react/webpack多页面打包.md)
-* [clientHeight,offsetHeigth,scrollHeight相关](./CSS/client,offset,scroll相关.md)
+* 180117 [clientHeight,offsetHeigth,scrollHeight相关](./CSS/client,offset,scroll相关.md)
+* [逻辑运算](./JS/逻辑运算.md)
+
 ## 18-01
+* 17 [一些正则表达式练习](./JS/正则表达式测试.md)
 * 05 [浏览器的缓存笔记](./JS/缓存方案.md)
 * 03 [VSCode Debug之launch.json](./JS/launch.json.md)
 ## 17-12

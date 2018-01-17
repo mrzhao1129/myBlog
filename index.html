@@ -9,56 +9,57 @@
     html, body {
       height: 100%;
       margin: 0;
-      overflow-x: hidden
+      /* overflow-x: hidden */
     }
     .myHeadIcon {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      /* top: -500px; */
       background-color: whitesmoke;
+      position: relative;
+      height: 100px;
     }
     .myHeadIcon>a {
-      display: inline-block;
-      /* position: absolute; */
-      /* margin: auto; */
-      /* top: 0; */
-      /* width: 200px; */
-      /* overflow: hidden; */
-    }
-    .myHeadIcon>a>img {
-      /* border-radius: 100px; */
-      /* width: 100px; */
-      /* height: 230px; */
+      display: block;
+      width: 255px;
+      height: 255px;
+      position: absolute;
+      margin: auto;
+      top: 0; right: 0; bottom: 0; left: 0;
+      
+      border-radius: 80px;
+      overflow: hidden;
+      box-shadow:2px 2px 16px #333333;
     }
   </style>
 </head>
 <body>
-  <a href="https://github.com/mrzhao1129" title="您儿倒是点啊">
-    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
-  </a>
-  <canvas id="myCanvas" width="1200" height="600"></canvas>
-  <!-- <div class="myHeadIcon">
-    <a href="https://github.com/mrzhao1129" title="test click">
-      <img src="https://avatars1.githubusercontent.com/u/22837271?s=460&v=4"/>
-    </a>
-  </div> -->
   
+  <div class="myHeadIcon" id="canvasOuter">
+    <canvas id="myCanvas" width="1200" height="600"></canvas>
+    <a href="https://github.com/mrzhao1129" title="test click">
+      <!-- <img src="https://avatars1.githubusercontent.com/u/22837271?s=460&v=4"/> -->
+    </a>
+  </div>
+  <!-- <a href="https://github.com/mrzhao1129" title="您儿倒是点啊">
+    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+  </a> -->
+  <div style="height: 500px; background: #999"></div>
   <script>
-    window.onload = () => {
-      console.log(document.body.offsetWidth, document.body.offsetHeight);
-    }
+    var $canvasOuter = document.getElementById('canvasOuter');
     (function() {
       window.onresize = function() {
-        canvas.setAttribute('width', document.body.offsetWidth);
-        canvas.setAttribute('height', document.body.offsetHeight);
+        // canvas.setAttribute('width', document.body.offsetWidth);
+        // canvas.setAttribute('height', document.body.offsetHeight);
+        canvas.height = $canvasOuter.offsetHeight;
+        canvas.width = $canvasOuter.offsetWidth;
       }
       var canvas = document.getElementById('myCanvas');
-      console.log(document.body.offsetWidth, document.body.offsetHeight, document.body);
-      console.log(document.body.clientWidth, document.body.clientHeight);
-      canvas.height = document.body.offsetHeight - 1;
-      canvas.width = document.body.offsetWidth;
-      canvas.height
+      
+      canvas.height = $canvasOuter.offsetHeight;
+      canvas.width = $canvasOuter.offsetWidth;
+      //test
+      var ctx = canvas.getContext('2d');
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.fillRect(0, 0, 20000, 20000);
+      
       // canvas.setAttribute('width', document.body.offsetWidth);
       // canvas.setAttribute('height', document.body.offsetHeight);
     //   var ctx = canvas.getContext('2d');
