@@ -1,5 +1,5 @@
 # node多进程调试
-题外：VSCode中对于常规的调试上手还是比较简单的，但是今天用到了进程`child_process`，断点死活进不去。查了小半天，百度、谷歌翻了个遍，全都讲的迷迷糊糊，也可能是因为刚上手node的缘故。临近下班摸索出一个解决方案，VSCode进行常规的调试（debug），chrom进行子进程的调试（debug）。
+题外：VSCode中对于常规的调试上手还是比较简单的，但是今天用到了进程`child_process`，断点死活进不去。查了小半天，百度、谷歌翻了个遍，全都讲的迷迷糊糊，也可能是因为刚上手node的缘故。临近下班摸索出一个解决方案，VSCode进行常规的调试（debug），利用再开一个chrom进行子进程的调试（debug）。
 1. 利用npm全局安装nodemon后，在vs code debug配置配置中添加如下debug配置信息。[launch.js及nodemon相关](../JS/launch.json.md)。
 ```javascript
 {
@@ -18,7 +18,7 @@
 ```  
 2. 在chrome中安装[NIM插件](https://chrome.google.com/webstore/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj)，安装好插件后先放着，进行下一步。  
 
-3. 接下来是代码部分，nodemon在启动整个项目时候debug监听的端口是随机的每次都会变的（不特别设置的话，node官方默认指定inspect debug端口为9229），子进程我们在debug时候也需要指定一个端口进行监听（必须指定不然在主进程inspect debug时候子进程会与主进程端口冲突），下面代码我用一个环境变量来区分当前运行在调试模式还是生产模式。由于我的项目中根据设置要生成更多的进程，所以我用一个累加来定义这个端口。 
+3. 接下来是代码部分，nodemon在启动整个项目时候debug监听的端口是随机的每次都会变的（不特别设置的话，node官方默认指定inspect debug端口为9229），子进程我们在debug时候也需要指定一个端口进行监听（必须指定不然在主进程inspect debug时候子进程会与主进程端口冲突），下面代码我用一个环境变量`process.env.NODE_ENV`来区分当前运行在调试模式还是生产模式。由于我的项目中根据设置要生成更多的进程，所以我用一个累加来定义这个端口。 
 ```javascript
 var startPort = 9229;
 
@@ -30,9 +30,10 @@ if(process.env.NODE_ENV === 'dev') {
   this.worker = child_process.fork(path.join(__dirname, "jsonet.client.process.js"));
 }
 ```
-4. 在这之后重新吧NIM拿出来，设置到你需要调试的那个子进程端口上。运行程序，chrom会自动打开相应的调试页面，enjoy it，和chrome F12调试前端js代码一样一样的。
+4. 在这之后重新把NIM拿出来，设置到你需要调试的那个子进程端口上。运行程序，chrom会自动打开相应的调试页面，enjoy it，和chrome F12调试前端js代码一样一样的。  
+![](./image/NIM.jpg)
 ---
-(了解线程、进程知识及node的支持情况，读blog笔记 [[参考文章：Node.js的线程和进程详解]](https://github.com/xiongwilee/blog/issues/9))
+(题外：了解线程、进程知识及node的支持情况，读blog笔记 [[参考文章：Node.js的线程和进程详解]](https://github.com/xiongwilee/blog/issues/9))
 ## 单线程的优势
 ### 高性能
 * php：一个请求创建一个线程（频繁创建、切换线程）。
@@ -76,4 +77,4 @@ node API中大部分异步多线程就是用libuv实现
 ### child_process
 * fork
 * spawn  
-## 多线程与多进程
+## <s>多线程与多进程</s>
