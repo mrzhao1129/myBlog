@@ -77,8 +77,10 @@
         this.y = arguments[1];
         this.xv = arguments[2],
         this.yv = arguments[3];
+        this.color = arguments[4];
       }
       Dot.prototype.draw = function() {
+        ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, 3, 3);
         this.x -= this.xv;
         this.y -= this.yv;
@@ -90,12 +92,31 @@
       }
       //生成一定数量的点集群
       for(let i = 0; i < count; i++) {
-        dots.push(new Dot(
-          getRandom(0, canvas.width),
-          getRandom(0, canvas.height),
-          getRandom(-0.5, 0.5),
-          getRandom(-0.5, 0.5),
-        ));
+        if(i === 0) {
+          dots.push(new Dot(
+            getRandom(0, canvas.width),
+            getRandom(0, canvas.height),
+            getRandom(-3, 3),
+            getRandom(-3, 3),
+            'orange',
+          ));
+        }else if(i === 1) {
+          dots.push(new Dot(
+            getRandom(0, canvas.width),
+            getRandom(0, canvas.height),
+            getRandom(-3, 3),
+            getRandom(-3, 3),
+            'rgb(0, 204, 255)',
+          ));
+        } else {
+          dots.push(new Dot(
+            getRandom(0, canvas.width),
+            getRandom(0, canvas.height),
+            getRandom(-0.5, 0.5),
+            getRandom(-0.5, 0.5),
+            'black',
+          ));
+        }
       }
       ctx.fillStyle = 'black';
       function canvasDraw() {
@@ -106,7 +127,14 @@
         for(let i = 0; i < count; i++) {
           for(let j = i + 1; j < count; j++) {
             if(Math.sqrt(Math.pow(dots[i].x - dots[j].x, 2) + (Math.pow(dots[i].y - dots[j].y, 2))) < 60) {
-              ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+              if(dots[i].color !== 'black') {
+                ctx.strokeStyle = dots[i].color;
+              } else if(dots[j].color !== 'black') {
+                ctx.strokeStyle = dots[j].color;
+              } else {
+                ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+              }
+              
               ctx.beginPath();
               ctx.moveTo(dots[i].x + 1, dots[i].y + 1);
               ctx.lineTo(dots[j].x + 1, dots[j].y + 1);
