@@ -227,9 +227,11 @@ AF.prototype.getArg1 = function() {
   return this.arg1;
 }
 function BF(arg1, arg2) {
+  //勾重点，修改AF中this的指向
   AF.call(this, arg1);
   this.arg2 = arg2;
 }
+//勾重点，使用指定的原型对象（AF.prototype）及其属性去创建一个新的对象,之后赋给BF.prototype
 BF.prototype = Object.create(AF.prototype);
 BF.prototype.getArg2 = function() {
   return this.arg2;
@@ -238,6 +240,7 @@ function CF(arg1, arg2, arg3) {
   BF.call(this, arg1, arg2);
   this.arg3 = arg3;
 }
+
 CF.prototype = Object.create(BF.prototype);
 CF.prototype.getArg3 = function() {
   return this.arg3;

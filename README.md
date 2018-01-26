@@ -5,9 +5,12 @@
 * [node调试（多进程调试）](./nodejs/node多进程调试.md)
 * [webpack多页面打包](./react/webpack多页面打包.md)
 * [逻辑运算（~）](./JS/逻辑运算.md)
+* [for...of与for...in](./JS/for...of与for...in.md)
+* [Map and WeakMap](./JS/Map_and_WeakMap.md)
+* [React16 新特性官网翻译](./react/React16新特性官网翻译.md)
 
 ## 18-01
-* 22 [npm坑坑](./nodejs/npm坑坑.md)
+* 22 [npm安装路径及配置](./nodejs/npm坑坑.md)
 * 22 [垂直水平居中整理](./CSS/垂直水平居中.md)
 * 19 [clientHeight,offsetHeigth,scrollHeight相关](./CSS/client,offset,scroll相关.md)
 * 17 [一些正则表达式练习](./JS/正则表达式测试.md)

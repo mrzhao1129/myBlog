@@ -95,6 +95,7 @@ function insertionSort(arr) {
 ![](../static/img/Sorting_quicksort_anim.gif)
 ```javascript
 function quickSort(arr) {
+  //代码开始
   arr = [].concat(arr);
   Array.prototype.quickSort = function() {
     if(this.length <= 1) {
@@ -113,6 +114,7 @@ function quickSort(arr) {
   }
   var afterSort = arr.quickSort();
   return afterSort;
+  //代码结束
 }
 //quickSort: 175.581ms
 ```
