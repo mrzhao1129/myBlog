@@ -49,10 +49,19 @@ document.body.appendChild(renderer.domElement);
 * 法向材质（MeshNormalMaterial）
 * 【没看】材质的纹理贴图
 ## 光与影
-* 环境光 `THREE.AmbientLight(hex)` 在各处形成的亮度一致
+* 环境光 `new THREE.AmbientLight(hex)` 在各处形成的亮度一致
 * 点光源 `new THREE.PointLight(0xffffff, 2, 100)` 
   > 颜色、光强（1=100%）、可照射最远距离（default=0）
-
+* 平行光`new THREE.DirectionalLight()`
+* 聚光灯`new THREE.SpotLight(hex, intensity, distance, angle, exponent)`
+  > 相比点光源，多了angle和exponent两个参数。  
+  > angle是聚光灯的张角，缺省值是Math.PI / 3，最大值是Math.PI / 2；  
+  > exponent是光强在偏离target的衰减指数（target需要在之后定义，缺省值为(0, 0, 0)），缺省值是10。
+  > light.target：light.postion是灯的位置，light.target是灯的朝向（默认`(0, 0, 0)`）;可以直接指向一个模型（Mesh）
+* 阴影【没有坑出来】
+## 着色器
+* 顶点着色器
+* 片元着色器
 
 [[the first example]](http://wow.techbrood.com/fiddle/38296)  
 [[参考文档]：Three.js 中文教程](http://techbrood.com/threejs/docs/)  

@@ -31,11 +31,15 @@
     var renderer = new THREE.WebGLRenderer();
     // renderer.setSize(500, 500);
     renderer.setSize(window.innerWidth, window.innerHeight);
+    //增加阴影配置
+    // renderer.shadowMap.enabled = true;
+    // renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     document.body.appendChild(renderer.domElement);
     //状态管理器
     var stats = new Stats();
     stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
     document.body.appendChild( stats.dom );
+    //----------形状----------
     // 一个立方体
     var geometry = new THREE.BoxGeometry(2, 2, 2);
     //第二个立方体
@@ -59,17 +63,17 @@
     // geometry.colors = ['red'];
     // geometry.computeBoundingSphere();
 
-    //材质
+    //----------材质----------
     //基本材质
     // var material = new THREE.MeshBasicMaterial({
     //   color: 0xff0000,
     //   // wireframe: true
     // });
     //Lambert材质（漫反射）
-    // var material = new THREE.MeshLambertMaterial({
-    //   color: 'red',
-    //   emissive: 'green'
-    // });
+    var material = new THREE.MeshLambertMaterial({
+      color: 0xffffff,
+      // emissive: 'green'
+    });
     //Phong材质（包含镜面反射）
     // var material = new THREE.MeshPhongMaterial({
     //   color: 0xff0000,
@@ -77,20 +81,32 @@
     //   shininess: 1000
     // });
     //法向材质
-
-    var material = new THREE.MeshNormalMaterial()
+    // var material = new THREE.MeshNormalMaterial()
+    //创建模型实体并添加
     var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    var cube2 = new THREE.Mesh(geometry, material);
+    var cube3 = new THREE.Mesh(geometry, material);
+    var cube4 = new THREE.Mesh(geometry, material);
+    cube.position.set(0, 1, 0);
+    cube2.position.set(4, 1, 0);
+    cube2.castShadow = true;
+    cube3.position.set(8, 1, 0);
+    cube4.position.set(-4, 1, 0);
+    scene.add(cube, cube2, cube3, cube4);
+    //加一个平面
+    var plan = new THREE.PlaneGeometry(20, 20);
+    var cubePlan = new THREE.Mesh(plan, material);
+    cubePlan.rotation.x = -Math.PI / 2;
+    cubePlan.receiveShadow = true;
+    scene.add(cubePlan);
     //网格辅助
     var gridHelperXZ = new THREE.GridHelper( 40, 80, 'white' );
     var gridHelperXY = new THREE.GridHelper( 40, 2, 'white' );
     gridHelperXY.rotation.x = Math.PI/2;
     var gridHelperYZ = new THREE.GridHelper( 40, 2, 'white' );
     gridHelperYZ.rotation.z = Math.PI/2;
-
-    scene.add( gridHelperXZ );
-    scene.add( gridHelperXY );
-    scene.add( gridHelperYZ );
+    scene.add( gridHelperXZ, gridHelperXY, gridHelperYZ );
+    //----------上帝说要有光----------
     //点光源
     // var light = new THREE.PointLight( 0xff0040, 1, 50 );
     // light.position.set( 3, 3, 0 );
@@ -107,21 +123,41 @@
     // var light = new THREE.AmbientLight('white');
     // scene.add(light);
     //点光源
-    var light = new THREE.PointLight(0xffffff, 2, 40);
-    light.position.set(0, 0, 3);
+    // var light = new THREE.PointLight(0xffffff, 2, 40);
+    // light.position.set(0, 0, 3);
+    // scene.add(light);
+    //平行光
+    // var light = new THREE.DirectionalLight();
+    // light.position.z = 4;
+    // scene.add(light);
+    //聚光灯
+    var light = new THREE.SpotLight(0xffffff, 5, 100, Math.PI / 4, 25);
+    light.position.set(0, 5, 0);
+    light.target = cube2;
+    light.castShadow = true;
     scene.add(light);
+    //阴影辅助
+    var helper = new THREE.CameraHelper( light.shadow.camera );
+    scene.add( helper );
+    //阴影
 
+
+    //旋转个可视角度
     scene.rotation.y = -Math.PI / 4;
     scene.rotation.x = Math.PI / 4;
     // camera.position.x = 10;
     // camera.position.y = 10;
     camera.position.z = 50;
-    // 用来进行旋转动画
+    // ----------动画----------
     var render = function () {
       stats.begin();
       // var time = Date.now() * 0.0005;
-      //cube.rotation.x += 0.005;
-      cube.rotation.y += 0.02;
+      // cube.rotation.x += 0.005;
+      // cube.rotation.y += 0.02;
+      // cube.position.z += 0.02;
+
+      // scene.rotation.x += 0.02;
+      // scene.rotation.y += 0.005;
       // light.position.x = Math.sin( time * 0.7 ) * 30;
       // light.position.y = Math.cos( time * 0.5 ) * 40;
       // light.position.z = Math.cos( time * 0.3 ) * 30;

@@ -1,6 +1,6 @@
 # for...of与for...in
-for...in返回字符串的index为字符串类型key，遍历对象中所有可枚举属性、方法。  
-for...of返回字符串的index为value，
+for...in返回字符串的index为字符串类型key，遍历对象中所有可枚举属性、方法（包含自身有的和原型链上面的）。  
+for...of返回字符串的index为value，在可迭代对象中循环。（Array，Map，Set，String，TypedArray，arguments）
 ```javascript
 var myArray=[1,2,4,5,6,7]
 myArray.name="数组"
