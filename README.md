@@ -6,6 +6,7 @@
 * [for...of与for...in](./JS/for...of与for...in.md)
 * [React16 新特性官网翻译](./react/React16新特性官网翻译.md)
 ## 18-02
+* 03 [node调试（多进程调试）](./nodejs/node多进程调试.md)
 * 03 [了解three.js](./canvas/three.js.md)
 ## 18-01
 * 30 [Map and WeakMap](./JS/Map_and_WeakMap.md)
@@ -18,7 +19,6 @@
 ## 17-12
 * 29 [[node]net之TCP连接](./nodejs/net之TCP连接.md)
 * 28 [[JS]JS模块化(CMD)](./JS/JS模块化(AMD,CMD).md)
-* 22 [node调试（多进程调试）](./nodejs/node多进程调试.md)
 * 19 [[BOM]页面间的相互操作](./JS/页面间的相互操作.md)
 * 11 [[CSS]纯CSS竖型菜单实现](./CSS/纯CSS竖型菜单实现.md)
 * 08 [[Canvas]简单的Canvas动画-点线随动](./canvas/点线随动.md)
