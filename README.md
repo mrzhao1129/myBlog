@@ -1,7 +1,6 @@
 # [Blog[首页施工中:scream:]](https://mrzhao1129.github.io/myBlog/)
 ## 草稿
 * [纯CSS轮播图实现](./CSS/纯CSS轮播图实现.md)
-* [node调试（多进程调试）](./nodejs/node多进程调试.md)
 <!-- * [webpack多页面打包](./react/webpack多页面打包.md) -->
 * [逻辑运算（~）](./JS/逻辑运算.md)
 * [for...of与for...in](./JS/for...of与for...in.md)
@@ -19,6 +18,7 @@
 ## 17-12
 * 29 [[node]net之TCP连接](./nodejs/net之TCP连接.md)
 * 28 [[JS]JS模块化(CMD)](./JS/JS模块化(AMD,CMD).md)
+* 22 [node调试（多进程调试）](./nodejs/node多进程调试.md)
 * 19 [[BOM]页面间的相互操作](./JS/页面间的相互操作.md)
 * 11 [[CSS]纯CSS竖型菜单实现](./CSS/纯CSS竖型菜单实现.md)
 * 08 [[Canvas]简单的Canvas动画-点线随动](./canvas/点线随动.md)

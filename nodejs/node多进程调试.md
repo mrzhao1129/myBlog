@@ -74,9 +74,9 @@ node官方没有提供关于多线程的api
 > libuv是一个跨平台的异步I/O库，它主要用于Node.js的开发，同时他也被Mozilla's Rust language, Luvit, Julia, pyuv等使用。它主要包括了Event loops事件循环，Filesystem文件系统，Networking网络支持，Threads线程，Processes进程，Utilities其他工具。
 
 node API中大部分异步多线程就是用libuv实现
-## <s>多进程</s>
-### <s>cluster</s>
-### <s>child_process</s>
-* <s>fork</s>
-* <s>spawn</s>  
-## <s>多线程与多进程</s>
+<!-- ## 多进程
+### cluster
+### child_process
+* fork
+* spawn  
+## 多线程与多进程 -->
