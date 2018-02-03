@@ -17,11 +17,30 @@
     }
   </style>
 </head>
-
 <body>
   <script src="./three.89.js"></script>
   <script src="./OrbitControls.js"></script>
   <script src="./stats.min.js"></script>
+  <!-- 顶点着色器 -->
+  <script id="vs" type="x-shader/x-vertex">
+    //varying从顶点着色器传递到片元着色器中
+    varying vec2 vUv;
+
+    void main(){    
+      // passing texture to fragment shader
+      // uv代表了该顶点在UV映射时的横纵坐标
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  </script>
+  <!-- 片元着色器 -->
+  <script id="fs" type="x-shader/x-fragment">
+    varying vec2 vUv;
+
+    void main() {
+      gl_FragColor = vec4(vUv.x, vUv.y, 1.0, 1.0);
+    }
+  </script>
   <script>
     // Our Javascript will go here.
     var scene = new THREE.Scene();
@@ -35,7 +54,7 @@
     // renderer.shadowMap.enabled = true;
     // renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     document.body.appendChild(renderer.domElement);
-    //状态管理器
+    //状态管理器【无视】
     var stats = new Stats();
     stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
     document.body.appendChild( stats.dom );
@@ -74,6 +93,11 @@
       color: 0xffffff,
       // emissive: 'green'
     });
+    //着色器材质
+    // var material = new THREE.ShaderMaterial({
+    //   vertexShader: document.getElementById('vs').textContent,
+    //   fragmentShader: document.getElementById('fs').textContent
+    // }); 
     //Phong材质（包含镜面反射）
     // var material = new THREE.MeshPhongMaterial({
     //   color: 0xff0000,
@@ -137,8 +161,8 @@
     light.castShadow = true;
     scene.add(light);
     //阴影辅助
-    var helper = new THREE.CameraHelper( light.shadow.camera );
-    scene.add( helper );
+    // var helper = new THREE.CameraHelper( light.shadow.camera );
+    // scene.add( helper );
     //阴影
 
 

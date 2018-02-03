@@ -1,7 +1,7 @@
 # three.js笔记
 ## 序
 * 代码测试环境：http://wow.techbrood.com/fiddle/new
-* [学习过程实现效果Demo](./source/three/threeTest.html)
+<!-- * [学习过程中测试Demo](./source/three/threeTest.html) -->
 
 ## 三个组件
 ### 场景scene（整个布景）
@@ -31,6 +31,33 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 ```
 ## 核心模块
+* 缓存属性
+* 缓存几何模型
+* 时钟
+* 事件分发器
+* 三角面
+  ```javascript
+  var normal = new THREE.Vector3( 0, 1, 0 );
+  var color = new THREE.Color( 0xffaa00 );
+  //三个顶点+面法向量或顶点法向量数组、面颜色或顶点颜色的数组、材料索引
+  var face = new THREE.Face3( 0, 1, 2, normal, color, 0 );
+  ```
+* 几何模型
+  ```javascript
+  var geometry = new THREE.Geometry();
+  //用来保存模型中所有顶点位置的数组。
+  geometry.vertices.push(
+    new THREE.Vector3( -10,  10, 0 ),
+    new THREE.Vector3( -10, -10, 0 ),
+    new THREE.Vector3(  10, -10, 0 )
+  );
+  //三角面数据
+  geometry.faces.push( new THREE.Face3( 0, 1, 2 ) );
+  //计算该模型的包围球
+  geometry.computeBoundingSphere();
+  ```
+* 3D对象：3D场景中图形对象的基类
+* 光线投射器
 ## 辅助工具
 * 鼠标辅助工具，可根据鼠标移动转换相机位置（OrbitControls.js）
 * 网格辅助工具（`new THREE.GridHelper( 40, 80, 'white' )`）
@@ -60,8 +87,27 @@ document.body.appendChild(renderer.domElement);
   > light.target：light.postion是灯的位置，light.target是灯的朝向（默认`(0, 0, 0)`）;可以直接指向一个模型（Mesh）
 * 阴影【没有坑出来】
 ## 着色器
-* 顶点着色器
-* 片元着色器
+### 着色器代码
+顶点着色器
+```
+//varying从顶点着色器传递到片元着色器中
+varying vec2 vUv;
+
+void main(){    
+  // passing texture to fragment shader
+  // uv代表了该顶点在UV映射时的横纵坐标
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+```
+片元着色器
+```
+varying vec2 vUv;
+
+void main() {
+  gl_FragColor = vec4(vUv.x, vUv.y, 1.0, 1.0);
+}
+```
 
 [[the first example]](http://wow.techbrood.com/fiddle/38296)  
 [[参考文档]：Three.js 中文教程](http://techbrood.com/threejs/docs/)  
