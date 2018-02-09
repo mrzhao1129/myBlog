@@ -236,6 +236,8 @@ BF.prototype = Object.create(AF.prototype);
 BF.prototype.getArg2 = function() {
   return this.arg2;
 }
+//180209新增
+BF.prototype.constructor = BF;
 function CF(arg1, arg2, arg3) {
   BF.call(this, arg1, arg2);
   this.arg3 = arg3;
@@ -245,6 +247,8 @@ CF.prototype = Object.create(BF.prototype);
 CF.prototype.getArg3 = function() {
   return this.arg3;
 }
+//180209新增
+CF.prototype.constructor = CF;
 var af = new AF(1);
 var bf = new BF(2, 3);
 var cf = new CF(4, 5, 6);

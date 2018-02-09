@@ -81,7 +81,6 @@
     // );
     // geometry.colors = ['red'];
     // geometry.computeBoundingSphere();
-
     //----------材质----------
     //基本材质
     // var material = new THREE.MeshBasicMaterial({
@@ -118,11 +117,11 @@
     cube4.position.set(-4, 1, 0);
     scene.add(cube, cube2, cube3, cube4);
     //加一个平面
-    var plan = new THREE.PlaneGeometry(20, 20);
-    var cubePlan = new THREE.Mesh(plan, material);
-    cubePlan.rotation.x = -Math.PI / 2;
-    cubePlan.receiveShadow = true;
-    scene.add(cubePlan);
+    // var plan = new THREE.PlaneGeometry(20, 20);
+    // var cubePlan = new THREE.Mesh(plan, material);
+    // cubePlan.rotation.x = -Math.PI / 2;
+    // cubePlan.receiveShadow = true;
+    // scene.add(cubePlan);
     //网格辅助
     var gridHelperXZ = new THREE.GridHelper( 40, 80, 'white' );
     var gridHelperXY = new THREE.GridHelper( 40, 2, 'white' );
@@ -157,7 +156,7 @@
     //聚光灯
     var light = new THREE.SpotLight(0xffffff, 5, 100, Math.PI / 4, 25);
     light.position.set(0, 5, 0);
-    light.target = cube2;
+    // light.target = cube2;
     light.castShadow = true;
     scene.add(light);
     //阴影辅助
@@ -167,8 +166,8 @@
 
 
     //旋转个可视角度
-    scene.rotation.y = -Math.PI / 4;
-    scene.rotation.x = Math.PI / 4;
+    // scene.rotation.y = -Math.PI / 4;
+    // scene.rotation.x = Math.PI / 4;
     // camera.position.x = 10;
     // camera.position.y = 10;
     camera.position.z = 50;

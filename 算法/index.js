@@ -31,6 +31,7 @@ function myIndexOf(strShort, strLong) {
   return false;
 }
 /**
+ * 算法数字字符串加
  * ‘123456789’ -> ‘123，456,789’ 或者 ‘123456789.11’ -> ‘123,456,789.11’
  * @param {string} numStr 需要进行间隔的字符串
  * @returns {string} 返回处理后的字符串
