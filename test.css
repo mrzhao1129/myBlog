@@ -1,3 +1,36 @@
 test {
   position: absolute;
 }
+
+flextest {
+  display: flex;
+  justify-content: center;
+  /* 方向 */
+  flex-direction: row;
+  flex-direction: row-reverse;
+  flex-direction: column;
+  flex-direction: column-reverse;
+  /* 如何换行 （包装）*/
+  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+  /* 对齐方式 */
+  justify-content: flex-start;
+  justify-content: flex-end;
+  justify-content: center;
+  justify-content: space-around;
+  justify-content: space-between;
+  /* 上下对齐方式 */
+  align-items: flex-start;
+  align-items: flex-end;
+  align-items: center;
+  align-items: baseline;
+  align-items: stretch;
+  /* 多行的上下对齐方式 */
+  align-content: flex-start;
+  align-content: flex-end;
+  align-content: center;
+  align-content: space-around;
+  align-content: space-between;
+  align-content: stretch;
+}

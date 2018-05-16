@@ -1,5 +1,5 @@
 # [Blog[首页施工中 :scream:]](https://mrzhao1129.github.io/myBlog/)
-## 置顶 :confused:
+<!-- ## 置顶 :confused:
 * [一些有用的导航](./一些有用的.md)
 ## 草稿
 * [纯CSS轮播图实现](./CSS/纯CSS轮播图实现.md)
@@ -33,4 +33,4 @@
 * 01 [[logic]重温大学部分排序算法](./算法/sort.md)
 ## 17-11
 * 30 [[node]puppeteer实现变相的服务器渲染](./nodejs/puppeteer.md)
-* 25 [[node]运用nodejs进行文件夹拷贝](./nodejs/nodejs文件夹拷贝.md)
+* 25 [[node]运用nodejs进行文件夹拷贝](./nodejs/nodejs文件夹拷贝.md) -->
